@@ -1,0 +1,13 @@
+syntax = "proto3";
+package dice;
+
+option java_multiple_files = true;
+
+message DiceSeries {
+  message DiceRoll {
+    int32 value = 1;      // value of this roll, e.g. 2..12
+    string nickname = 2;  // string nickname, e.g. "snake eyes"
+  }
+
+  repeated DiceRoll rolls = 1;
+}
