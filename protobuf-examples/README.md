@@ -34,3 +34,6 @@ Examples https://github.com/grpc/grpc-kotlin/tree/master/examples
 
 GCP Cloud run Kotlin grpc example https://github.com/GoogleCloudPlatform/kotlin-samples/blob/main/run/grpc-hello-world-gradle/build.gradle.kts
 
+## Adding extension functions to generated Protobufs
+https://www.stackhawk.com/blog/kotlin-and-protobuf-tips-and-tricks/
+https://github.com/kaakaww/kotlin-extension-functions-for-protos
