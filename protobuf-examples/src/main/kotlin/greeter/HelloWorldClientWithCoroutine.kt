@@ -1,5 +1,6 @@
 package greeter
 
+import greeter.GreeterGrpcKt.GreeterCoroutineStub
 import io.grpc.ManagedChannel
 import io.grpc.ManagedChannelBuilder
 import io.grpc.StatusException
@@ -10,8 +11,8 @@ import java.io.Closeable
 import java.util.concurrent.Executors
 import java.util.concurrent.TimeUnit
 
-class HelloWorldClient(val channel: ManagedChannel) : Closeable {
-    private val stub = GreeterGrpcKt.GreeterCoroutineStub(channel)
+class HelloWorldClientWithCoroutine(val channel: ManagedChannel) : Closeable {
+    private val stub = GreeterCoroutineStub(channel)
 
     fun greet(s: String) = runBlocking {
         val request = helloRequest { name = s }
@@ -36,7 +37,7 @@ fun main(args: Array<String>) {
     Executors.newFixedThreadPool(10).asCoroutineDispatcher().use { dispatcher ->
         val builder = ManagedChannelBuilder.forTarget("localhost:50051").usePlaintext()
 
-        HelloWorldClient(
+        HelloWorldClientWithCoroutine(
             builder.executor(dispatcher.asExecutor()).build()
         ).use {
             val user = args.singleOrNull() ?: "world"
