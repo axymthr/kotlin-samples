@@ -50,6 +50,7 @@ class HelloWorldServerStreaming(val port: Int) {
     }
 
     private class HelloWorldStreamService : GreeterGrpcKt.GreeterCoroutineImplBase() {
+        // Reactive streams in coroutines
         override fun sayHelloStream(request: HelloRequest): Flow<HelloReply> = flow {
             while (true) {
                 delay(1000)

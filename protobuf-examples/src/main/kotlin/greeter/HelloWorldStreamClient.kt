@@ -33,6 +33,7 @@ class HelloWorldStreamClient(val channel: ManagedChannel) : Closeable {
 
     fun greet(s: String) = runBlocking {
         val request = helloRequest { name = s }
+        // Reactive streams in coroutines
         val flow = stub.sayHelloStream(request)
         flow.collect { response ->
             println(response.message)
