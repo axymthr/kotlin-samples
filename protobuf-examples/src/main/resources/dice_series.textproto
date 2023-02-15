@@ -1,0 +1,13 @@
+# proto-file: dice/dice.proto
+# proto-message: dice.DiceSeries
+
+rolls {
+  value: 4
+}
+rolls {
+  value: 6
+}
+rolls {
+  value: 19
+  nickname: "critical hit"
+}
